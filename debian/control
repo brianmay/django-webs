@@ -1,0 +1,14 @@
+Source: django-webs
+Section: python
+Priority: optional
+Maintainer: Brian May <bam@debian.org>
+Build-Depends: debhelper (>=7.0.0), python (>= 2.4), python-support (>= 0.6), cdbs (>= 0.4.49)
+Standards-Version: 3.9.1
+
+Package: django-webs
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends}, python-django (>= 1.2.1)
+Recommends: libapache2-mod-wsgi
+Description: High level web library for Django
+ Assists programmers write web code without reinventing the wheel or putting
+ presentation code in the db models.
