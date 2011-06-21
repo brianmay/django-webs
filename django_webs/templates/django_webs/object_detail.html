@@ -5,7 +5,11 @@
 {% block title %}{{ object }}{% endblock %}
 
 {% block content %}
-<h1>{% block object_title %}{{ object }}{% endblock %}</h1>
+<h1>
+{% block object_title %}
+{{ object }}
+{% endblock %}
+</h1>
 
 {% block tools %}
 {% show_view_buttons web user object %}

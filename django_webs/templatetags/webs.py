@@ -31,6 +31,16 @@ def get_view_url(instance):
     web = get_web_from_object(instance)
     return mark_safe(web.get_view_url(instance))
 
+@register.simple_tag
+def get_edit_url(instance):
+    web = get_web_from_object(instance)
+    return mark_safe(web.get_edit_url(instance))
+
+@register.simple_tag
+def get_delete_url(instance):
+    web = get_web_from_object(instance)
+    return mark_safe(web.get_delete_url(instance))
+
 def defaults(context):
     return {
         'user': context['user'],
