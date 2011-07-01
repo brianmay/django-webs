@@ -1,3 +1,9 @@
+django-webs (0.3-1) unstable; urgency=low
+
+  * Fix bug creating objects.
+
+ -- Brian May <bam@debian.org>  Fri, 01 Jul 2011 11:42:47 +1000
+
 django-webs (0.2-1) unstable; urgency=low
 
   * Tweak pagination classes.
