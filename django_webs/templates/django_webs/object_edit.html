@@ -14,7 +14,9 @@
 {% endblock %}
 </h1>
 
+{% if object %}
 {% show_error_list object.error_list %}
+{% endif %}
 
 {% block object %}
 <form method="post">{% csrf_token %}
