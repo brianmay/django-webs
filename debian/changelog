@@ -1,3 +1,9 @@
+django-webs (0.4-1) unstable; urgency=low
+
+  * Add accesskey values in pagination.
+
+ -- Brian May <bam@debian.org>  Sun, 03 Jul 2011 11:11:01 +1000
+
 django-webs (0.3-1) unstable; urgency=low
 
   * Fix bug creating objects.
