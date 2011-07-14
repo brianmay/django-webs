@@ -85,7 +85,6 @@ class web(object):
     def get_breadcrumbs(self):
         breadcrumbs = []
         breadcrumbs.append(breadcrumb(reverse("root"), _("Home")))
-        breadcrumbs.append(breadcrumb(reverse(self.url_prefix+"_list"), self.verbose_name_plural))
         return breadcrumbs
 
     def get_instance(self):
@@ -107,7 +106,9 @@ class web(object):
         return(self.url_prefix+'_list',)
 
     def get_list_breadcrumbs(self):
-        return self.get_breadcrumbs()
+        breadcrumbs = self.get_breadcrumbs()
+        breadcrumbs.append(breadcrumb(reverse(self.url_prefix+"_list"), self.verbose_name_plural))
+        return breadcrumbs
 
     def get_list_buttons(self, user):
         buttons = []
@@ -138,7 +139,7 @@ class web(object):
     # get the breadcrumbs to show while displaying this object
     def get_view_breadcrumbs(self, instance):
         self.assert_instance_type(instance)
-        breadcrumbs = self.get_breadcrumbs()
+        breadcrumbs = self.get_list_breadcrumbs()
         breadcrumbs.append(breadcrumb(self.get_view_url(instance), instance))
         return breadcrumbs
 
@@ -174,7 +175,7 @@ class web(object):
         return(self.url_prefix+"_add",)
 
     def get_add_breadcrumbs(self, **kwargs):
-        breadcrumbs = self.get_breadcrumbs()
+        breadcrumbs = self.get_list_breadcrumbs()
         breadcrumbs.append(breadcrumb(self.get_add_url(**kwargs), "add"))
         return breadcrumbs
 
