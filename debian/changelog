@@ -1,3 +1,9 @@
+django-webs (0.5-1) unstable; urgency=low
+
+  * Tweak how list thumbnails are generated.
+
+ -- Brian May <bam@debian.org>  Fri, 15 Jul 2011 10:29:52 +1000
+
 django-webs (0.4-1) unstable; urgency=low
 
   * Add accesskey values in pagination.
