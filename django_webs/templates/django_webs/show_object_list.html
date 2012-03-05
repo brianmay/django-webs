@@ -4,9 +4,6 @@
 {% spaceless %}
 {% load querystring from django_tables2 %}
 {% load trans blocktrans from i18n %}
-{% if table.page %}
-<div class="table-container">
-{% endif %}
 {% block table %}
 <table{% if table.attrs %} {{ table.attrs.as_html }}{% endif %}>
     {% block table.thead %}
@@ -29,7 +26,7 @@
     {% endblock table.thead %}
     {% block table.tbody %}
     <tbody>
-        {% for row in table.page.object_list|default:table.rows %} {# support pagination #}
+        {% for row in rows %}
         {% with row.record.error_list as error_list %}{% if error_list %}
         <tr><td colspan='20'>{% show_error_list error_list %}</td></tr>
         {% endif %}{% endwith %}
@@ -54,27 +51,6 @@
     {% endblock table.tfoot %}
 </table>
 {% endblock table %}
-
-{% if table.page %}
-{% block pagination %}
-<ul class="pagination">
-    {% if table.page.has_previous %}
-    {% block pagination.previous %}
-    <li class="previous"><a href="{% querystring table.prefixed_page_field=table.page.previous_page_number %}">{% trans "Previous" %}</a></li>
-    {% endblock pagination.previous %}
-    {% endif %}
-    {% block pagination.current %}
-    <li class="current">{% blocktrans with current=table.page.number total=table.paginator.num_pages %}Page {{ current }} of {{ total }}{% endblocktrans %}</li>
-    {% endblock pagination.current %}
-    {% if table.page.has_next %}
-    {% block pagination.next %}
-    <li class="next"><a href="{% querystring table.prefixed_page_field=table.page.next_page_number %}">{% trans "Next" %}</a></li>
-    {% endblock pagination.next %}
-    {% endif %}
-</ul>
-{% endblock pagination %}
-</div>
-{% endif %}
 {% endspaceless %}
 {% else %}
 No {{ web.plural_name }} available.
