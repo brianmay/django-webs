@@ -1,3 +1,9 @@
+django-webs (0.6-1) unstable; urgency=low
+
+  * Support django-tables at least 0.9.4.
+
+ -- Brian May <bam@debian.org>  Fri, 09 Mar 2012 13:16:09 +1100
+
 django-webs (0.5-1) unstable; urgency=low
 
   * Tweak how list thumbnails are generated.
