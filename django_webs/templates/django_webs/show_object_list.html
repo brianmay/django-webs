@@ -2,8 +2,8 @@
 {% if rows %}
 
 {% spaceless %}
-{% load querystring from django_tables2 %}
-{% load trans blocktrans from i18n %}
+{% load django_tables2 %}
+{% load i18n %}
 {% block table %}
 <table{% if table.attrs %} {{ table.attrs.as_html }}{% endif %}>
     {% block table.thead %}
