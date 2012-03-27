@@ -3,10 +3,10 @@
 {% if pagination_required %}
 <p class="paginator">
 {% if page_prev %}
-<a href='{% url_with_param "page"=page_prev %}' accesskey='p' class="relative">&lt;</a>
+<a href='{% url_with_param page=page_prev %}' accesskey='p' class="relative">&lt;</a>
 {% endif %}
 {% if page_next %}
-<a href='{% url_with_param "page"=page_next %}' accesskey='n' class="relative">&gt;</a>
+<a href='{% url_with_param page=page_next %}' accesskey='n' class="relative">&gt;</a>
 {% endif %}
 
 {% for i in page_range %}
@@ -17,9 +17,9 @@
     <span class="dots">... </span>
 {% else %}
 {% if forloop.last %}
-    <a href='{% url_with_param "page"=i %}' class='end'>{{ i }}</a>
+    <a href='{% url_with_param page=i %}' class='end'>{{ i }}</a>
 {% else %}
-    <a href='{% url_with_param "page"=i %}'>{{ i }}</a>
+    <a href='{% url_with_param page=i %}'>{{ i }}</a>
 {% endif %}
 {% endifequal %}
 {% endifequal %}
