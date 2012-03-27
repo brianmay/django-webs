@@ -129,7 +129,6 @@ class url_with_param_node(template.Node):
     def __init__(self, changes):
         self.changes = []
         for key, newvalue in changes:
-            key = template.Variable(key)
             newvalue = template.Variable(newvalue)
             self.changes.append( (key,newvalue,) )
 
@@ -144,7 +143,6 @@ class url_with_param_node(template.Node):
             result[key] = newvalue
 
         for key, newvalue in self.changes:
-            key = key.resolve(context)
             newvalue = newvalue.resolve(context)
             result[key] = newvalue
 
