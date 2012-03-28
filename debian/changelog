@@ -1,3 +1,10 @@
+django-webs (0.7-1) unstable; urgency=low
+
+  * Support Django 1.2.x in Debian/stable.
+  * Backwards incomptable change with url_with_param.
+
+ -- Brian May <bam@debian.org>  Wed, 28 Mar 2012 10:58:53 +1100
+
 django-webs (0.6-1) unstable; urgency=low
 
   * Support django-tables at least 0.9.4.
