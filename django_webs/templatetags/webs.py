@@ -126,7 +126,8 @@ def pagination(context, page_obj):
     }
 
 class url_with_param_node(template.Node):
-    def __init__(self, changes):
+    def __init__(self, copy, changes):
+        self.copy = copy
         self.changes = []
         for key, newvalue in changes:
             newvalue = template.Variable(newvalue)
@@ -139,8 +140,10 @@ class url_with_param_node(template.Node):
         request = context['request']
 
         result = {}
-        for key, newvalue in request.GET.items():
-            result[key] = newvalue
+
+        if self.copy:
+            for key, newvalue in request.GET.items():
+                result[key] = newvalue
 
         for key, newvalue in self.changes:
             newvalue = newvalue.resolve(context)
@@ -156,13 +159,21 @@ class url_with_param_node(template.Node):
 def url_with_param(parser, token):
     bits = token.split_contents()
     qschanges = []
-    for i in bits[1:]:
+
+    bits.pop(0)
+
+    copy = False
+    if bits[0] == "copy":
+        copy = True
+        bits.pop(0)
+
+    for i in bits:
         try:
             key, newvalue = i.split('=', 1);
             qschanges.append( (key,newvalue,) )
         except ValueError:
             raise template.TemplateSyntaxError, "Argument syntax wrong: should be key=value"
-    return url_with_param_node(qschanges)
+    return url_with_param_node(copy, qschanges)
 
 @register.inclusion_tag('django_webs/show_buttons.html', takes_context=True)
 def show_list_buttons(context, web, user):
