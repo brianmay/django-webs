@@ -1,3 +1,10 @@
+django-webs (0.9-1) unstable; urgency=low
+
+  * Replace MEDIA_URL with STATIC_URL for Django 1.3 static file support.
+  * Remove cruft.
+
+ -- Brian May <bam@debian.org>  Fri, 14 Sep 2012 10:30:19 +1000
+
 django-webs (0.8-1) unstable; urgency=low
 
   * Don't copy all parameters in URLs unless required.
