@@ -13,8 +13,8 @@
             <th {{ column.attrs.th.as_html }}>
             {% if column.sortable %}
                 <a href="{% querystring table.prefixed_order_by_field=column.order_by.opposite|default:column.name %}">{{ column.header }}
-                {% if column.order_by.is_ascending %}<img src="{{ MEDIA_URL }}img/admin/arrow-down.gif" />{% endif %}
-                {% if column.order_by.is_descending %}<img src="{{ MEDIA_URL }}img/admin/arrow-up.gif" />{% endif %}
+                {% if column.order_by.is_ascending %}<img src="{{ STATIC_URL }}img/admin/arrow-down.gif" />{% endif %}
+                {% if column.order_by.is_descending %}<img src="{{ STATIC_URL }}img/admin/arrow-up.gif" />{% endif %}
                 </a>
             {% else %}
                 {{ column }}
