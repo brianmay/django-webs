@@ -10,16 +10,11 @@
     <thead>
         <tr>
         {% for column in table.columns %}
-            <th {{ column.attrs.th.as_html }}>
-            {% if column.sortable %}
-                <a href="{% querystring table.prefixed_order_by_field=column.order_by.opposite|default:column.name %}">{{ column.header }}
-                {% if column.order_by.is_ascending %}<img src="{{ STATIC_URL }}img/admin/arrow-down.gif" />{% endif %}
-                {% if column.order_by.is_descending %}<img src="{{ STATIC_URL }}img/admin/arrow-up.gif" />{% endif %}
-                </a>
+            {% if column.orderable %}
+            <th {{ column.attrs.th.as_html }}><a href="{% querystring table.prefixed_order_by_field=column.order_by_alias.next %}">{{ column.header }}</a></th>
             {% else %}
-                {{ column }}
+            <th {{ column.attrs.th.as_html }}>{{ column.header }}</th>
             {% endif %}
-            </th>
         {% endfor %}
         </tr>
     </thead>
