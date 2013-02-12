@@ -1,27 +1,32 @@
-{% extends "base_site.html" %}
+{% extends "main.html" %}
 {% load i18n %}
 {% load webs %}
 
 {% block title %}{{ type.plural_name }}{% endblock %}
 
-{% block content %}
-
-<h1>{{ type.plural_name }}</h1>
-
-{% block tools %}
+{% block object-tools %}
 {% show_list_buttons web user %}
-{% endblock %}
 
 {% if form %}
+<div class="module">
 <h2>Search</h2>
 <form method="get">
-<table>{{ form.as_table }}</table>
+{{ form.as_p }}
 <input type="submit" />
 </form>
+</div>
 {% endif %}
+
+{% endblock %}
+
+{% block content %}
+<div id="content-main">
+
+<h1>{{ type.plural_name }}</h1>
 
 {% show_list table page_obj.object_list web %}
 
 {% pagination page_obj %}
 
+</div>
 {% endblock %}

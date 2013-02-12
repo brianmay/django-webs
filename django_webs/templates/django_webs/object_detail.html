@@ -1,23 +1,37 @@
-{% extends "base_site.html" %}
+{% extends "main.html" %}
 {% load i18n %}
 {% load webs %}
 
 {% block title %}{{ object }}{% endblock %}
 
+{% block object-tools %}
+{% show_view_buttons web user object %}
+
+{% if form %}
+<div class="module">
+<h2>Search</h2>
+<form method="get">
+{{ form.as_p }}
+<input type="submit" />
+</form>
+</div>
+{% endif %}
+
+{% endblock %}
+
 {% block content %}
+<div id="content-main">
+
 <h1>
 {% block object_title %}
 {{ object }}
 {% endblock %}
 </h1>
 
-{% block tools %}
-{% show_view_buttons web user object %}
-{% endblock %}
-
 {% show_error_list object.error_list %}
 
 {% block object %}
 {% endblock %}
 
+</div>
 {% endblock %}

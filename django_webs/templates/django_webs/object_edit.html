@@ -1,4 +1,4 @@
-{% extends "base_site.html" %}
+{% extends "forms.html" %}
 {% load i18n %}
 {% load webs %}
 
@@ -7,6 +7,8 @@
 {% endblock %}
 
 {% block content %}
+<div id="content-main">
+
 <h1>
 {% if object %}Edit{% else %}Create{% endif %}
 {% block object_title %}
@@ -25,4 +27,5 @@
 </form>
 {% endblock %}
 
+</div>
 {% endblock %}

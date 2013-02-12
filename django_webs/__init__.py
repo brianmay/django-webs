@@ -19,7 +19,7 @@ from django.db import models as m
 from django.core.paginator import Paginator, InvalidPage, EmptyPage
 from django.template import RequestContext, loader
 from django.shortcuts import render_to_response
-from django.http import HttpResponseRedirect, HttpResponseForbidden, Http404
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.utils.translation import ugettext as _
 
 class breadcrumb(object):

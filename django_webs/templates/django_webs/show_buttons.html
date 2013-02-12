@@ -1,7 +1,10 @@
 {% if buttons %}
-    <ul class="object-tools">
+  <div class="module">
+    <h2>Actions</h2>
+    <ul class="menu">
     {% for button in buttons %}
-        <li><a class="{{ button.class }}" href="{{ button.url }}">{{ button.text }}</a></li>
+    <li><a onclick='parent.location="{{ button.url }}"' class="{{ button.class }}" href="{{ button.url }}">{{ button.text }}</a></li>
     {% endfor %}
     </ul>
+  </div>
 {% endif %}
